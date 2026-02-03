@@ -1,3 +1,5 @@
+"""Module providing EnterpriseManager class"""
+
 from UC3MConsulting import EnterpriseManager
 import string
 
