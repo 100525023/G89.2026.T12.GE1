@@ -1,5 +1,5 @@
 import json
-from .EnterpriseManagementException import EnterpriseManagementException
+from .enterprise_management_exception import EnterpriseManagementException
 from .EnterpriseRequest import EnterpriseRequest
 
 class EnterpriseManager:
