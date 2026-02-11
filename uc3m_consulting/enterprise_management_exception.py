@@ -7,7 +7,7 @@ and validation failures.
 
 Author: Adam Kowalczyk Holtsova - 100525203
 Date: 10/02/2026
-Company: UC3MConsulting
+Company: uc3m_consulting
 """
 
 class EnterpriseManagementException(Exception):

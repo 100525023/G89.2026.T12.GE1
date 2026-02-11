@@ -1,47 +1,70 @@
-"""Module providing EnterpriseManager class"""
+"""
+Main Module
 
-from UC3MConsulting import EnterpriseManager
+This module provides encoding/decoding utilities and demonstrates
+the use of EnterpriseManager for validating and processing enterprise data.
+
+Author: Adam Kowalczyk Holtsova - 100525203
+Date: 11/02/2026
+Company: uc3m_consulting
+"""
 import string
+from uc3m_consulting import EnterpriseManager
 
-#GLOBAL VARIABLES
-letters = string.ascii_letters + string.punctuation + string.digits
-shift = 3
+# GLOBAL CONSTANTS
+LETTERS = string.ascii_letters + string.punctuation + string.digits
+SHIFT = 3
 
 
-def Encode(word):
+def encode(word):
+    """
+    Encode a string using Caesar cipher with a fixed shift.
+    """
     encoded = ""
     for letter in word:
         if letter == ' ':
             encoded = encoded + ' '
         else:
-            x = (letters.index(letter) + shift) % len(letters)
-            encoded = encoded + letters[x]
+            x = (LETTERS.index(letter) + SHIFT) % len(LETTERS)
+            encoded = encoded + LETTERS[x]
     return encoded
 
-def Decode(word):
-    encoded = ""
+
+def decode(word):
+    """
+    Decode a string using Caesar cipher with a fixed shift.
+    """
+    decoded = ""
     for letter in word:
         if letter == ' ':
-            encoded = encoded + ' '
+            decoded = decoded + ' '
         else:
-            x = (letters.index(letter) - shift) % len(letters)
-            encoded = encoded + letters[x]
-    return encoded
+            x = (LETTERS.index(letter) - SHIFT) % len(LETTERS)
+            decoded = decoded + LETTERS[x]
+    return decoded
 
 
 def main():
+    """
+    Main function to demonstrate enterprise data processing with encoding.
 
+    1. Creates an EnterpriseManager instance
+    2. Reads enterprise data from JSON file
+    3. Encodes and decodes the data
+    4. Prints the results
+    """
     mng = EnterpriseManager()
-    res = mng.ReadproductcodefromJSON("test.json")
-    strRes = res.__str__()
-    print(strRes)
-    EncodeRes = Encode(strRes)
-    print("Encoded Res "+ EncodeRes)
-    DecodeRes = Decode(EncodeRes)
-    print("Decoded Res: " + DecodeRes)
-    print("cif: " + res.ENTERPRISE_CIF)
-    print("enterprise_name: " + res.ENTerprise_Name)
-    print("enterprise_phone: " + res.PHONE_NUMBER)
+    res = mng.read_product_code_from_json("test.json")
+    str_res = str(res)
+    print(str_res)
+    encode_res = encode(str_res)
+    print("Encoded Res " + encode_res)
+    decode_res = decode(encode_res)
+    print("Decoded Res: " + decode_res)
+    print("cif: " + res.enterprise_cif)
+    print("enterprise_name: " + res.enterprise_name)
+    print("enterprise_phone: " + res.phone_number)
+
 
 if __name__ == "__main__":
     main()

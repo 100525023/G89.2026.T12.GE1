@@ -67,9 +67,12 @@ ignore-patterns=^\.#
 # Unix pattern matching.
 ignored-modules=
 
+# MODIFIED RULE
 # Python code to execute, usually for sys.path manipulation such as
-# pygtk.require().
-#init-hook=
+# pygtk.require(). Added to resolve 'Unable to import' errors by adding
+# the project root directory to sys.path so Pylint can find project modules.
+# init-hook=
+init-hook='import sys; import os; sys.path.append(os.path.dirname(os.path.abspath(".")))'
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use, and will cap the count on Windows to
@@ -488,6 +491,11 @@ confidence=HIGH,
 # --enable=similarities". If you want to run only the classes checker, but have
 # no Warning level messages displayed, use "--disable=all --enable=classes
 # --disable=W".
+# MODIFIED RULE
+# Disable the message, report, category or checker with the given id(s).
+# Added 'import-error' to suppress false positives when Pylint cannot resolve
+# project-specific module imports in the virtual environment context.
+# disable=raw-checker-failed,bad-inline-option,locally-disabled,file-ignored,suppressed-message,useless-suppression,deprecated-pragma,use-symbolic-message-instead,use-implicit-booleaness-not-comparison-to-string,use-implicit-booleaness-not-comparison-to-zero
 disable=raw-checker-failed,
         bad-inline-option,
         locally-disabled,
@@ -497,7 +505,8 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-symbolic-message-instead,
         use-implicit-booleaness-not-comparison-to-string,
-        use-implicit-booleaness-not-comparison-to-zero
+        use-implicit-booleaness-not-comparison-to-zero,
+        import-error
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option
