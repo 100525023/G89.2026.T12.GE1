@@ -314,33 +314,17 @@ ignored-parents=
 # max-args=5
 max-args=6
 
-# MODIFIED RULE
-# Maximum number of attributes for a class (see R0902).
-# Increased from 7 to 10 to accommodate classes with richer state, such as
-# domain model classes in the UC3MConsulting project.
-# max-attributes=7
-max-attributes=10
+# Maximum number of attributes for a class.
+max-attributes=7
 
-# MODIFIED RULE
 # Maximum number of boolean expressions in an if statement (see R0916).
-# Increased from 5 to 6 to allow slightly more complex conditional logic
-# without needing artificial decomposition.
-# max-bool-expr=5
-max-bool-expr=6
+max-bool-expr=5
 
-# MODIFIED RULE
 # Maximum number of branch for function / method body.
-# Increased from 12 to 15 to support validation-heavy methods such as CIF
-# checking, which require multiple conditional branches.
 # max-branches=12
-max-branches=15
 
-# MODIFIED RULE
 # Maximum number of locals for function / method body.
-# Increased from 15 to 20 to allow intermediate variables for readability
-# in complex calculation methods.
 # max-locals=15
-max-locals=20
 
 # Maximum number of parents for a class (see R0901).
 max-parents=7
@@ -350,8 +334,7 @@ max-positional-arguments=5
 
 # MODIFIED RULE
 # Maximum number of public methods for a class (see R0904).
-# Increased from 20 to 25 to allow service classes to expose a richer
-# public interface without artificial splitting.
+# Increased from 20 to 25 to allow service classes to expose a extensive interface.
 # max-public-methods=20
 max-public-methods=25
 
@@ -362,12 +345,8 @@ max-public-methods=25
 # max-returns=6
 max-returns=8
 
-# MODIFIED RULE
 # Maximum number of statements in function / method body.
-# Increased from 50 to 60 to allow more detailed logic in a single method
-# without requiring arbitrary decomposition.
 # max-statements=50
-max-statements=60
 
 # MODIFIED RULE
 # Minimum number of public methods for a class (see R0903).
@@ -407,8 +386,7 @@ max-line-length=120
 
 # MODIFIED RULE
 # Maximum number of lines in a module.
-# Increased from 1000 to 1200 to accommodate well-structured but larger
-# modules without forcing unnecessary splitting.
+# Increased from 1000 to 1200 to accommodate well-structured but larger modules.
 # max-module-lines=1000
 max-module-lines=1200
 

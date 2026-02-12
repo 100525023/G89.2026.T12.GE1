@@ -4,7 +4,7 @@ Main Module
 This module provides encoding/decoding utilities and demonstrates
 the use of EnterpriseManager for validating and processing enterprise data.
 
-Author: Adam Kowalczyk Holtsova - 100525203
+Author: Adam Kowalczyk Holtsova - 100525023
 Date: 11/02/2026
 Company: uc3m_consulting
 """
@@ -44,6 +44,23 @@ def decode(word):
     return decoded
 
 
+def test_cif_validation():
+    """
+    Test CIF validation with valid and invalid examples.
+    """
+    mng = EnterpriseManager()
+
+    # Valid CIF example
+    valid_cif = "A58818501"
+    print(f"\nTesting VALID CIF: {valid_cif}")
+    print(f"Result: {'✓ VALID' if mng.validate_cif(valid_cif) else '✗ INVALID'}")
+
+    # Invalid CIF example
+    invalid_cif = "A58818502"  # Wrong control digit
+    print(f"\nTesting INVALID CIF: {invalid_cif}")
+    print(f"Result: {'✓ VALID' if mng.validate_cif(invalid_cif) else '✗ INVALID'}")
+
+
 def main():
     """
     Main function to demonstrate enterprise data processing with encoding.
@@ -53,6 +70,9 @@ def main():
     3. Encodes and decodes the data
     4. Prints the results
     """
+    # Test CIF validation
+    test_cif_validation()
+
     mng = EnterpriseManager()
     res = mng.read_product_code_from_json("test.json")
     str_res = str(res)
